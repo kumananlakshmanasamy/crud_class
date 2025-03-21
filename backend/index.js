@@ -21,9 +21,19 @@
 // npm i express
 // npm i mongoose
 // npm i cors
+// npm i body-parser
 // crud -- > Create , read , update , delete 
 //  post , get , put , delete 
 
+//  async -- can run multiple task at a time 
+//  sync -- can run only one task at a time
+
+// req , res 
+//  req --> input given by the user 
+//  res --> output given by the logical program 
+
+//  req. body 
+//  req.params
 import express from 'express'
 import mongoose from 'mongoose';
 import route from './routes/userRoutes.js';
@@ -33,7 +43,7 @@ import cors from 'cors'
 const app = express();
 app.use(bodyParser.json())
 app.use(cors())
-app.get('/',(req,res)=>{
+app.post('/',(req,res)=>{
     res.send("hello world")
 })
 

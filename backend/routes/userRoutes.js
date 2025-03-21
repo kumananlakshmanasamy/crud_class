@@ -1,10 +1,10 @@
 import express from 'express'
-import { Create } from '../controller/userController.js'
+import { Create,getAllUsers,getuserbyid } from '../controller/userController.js'
 const route  = express.Router()
 
 route.post('/user',Create)
-// router.get('')
-// router.put('')
+route.get('/users',getAllUsers)
+route.get('/user/:id',getuserbyid)
 // router.delete('')
 
 export default route
