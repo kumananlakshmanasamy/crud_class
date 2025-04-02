@@ -1,8 +1,16 @@
 
+import Joi from 'joi'
 import User from '../model/userModule.js'
 //  create a user 
 export const Create = async(req,res)=>{
     try {
+        const userschema = Joi.object({
+            name: Joi.string().required()
+        })
+        const {error,value} = userschema.validate(req.body)
+        if (error){
+            return res.status(400).json({error:error.details})
+        }
         const newUser = new User(req.body)
         const  {email} = newUser
         const userExist = await  User.findOne({email})
