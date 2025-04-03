@@ -1,40 +1,51 @@
-//  axios is a javascript library
-// HTTP request server create
-
-// map Filter reducer 
-
-//  map -- create a new array 
-
 import axios from 'axios'
+import './user.css'
+import { useState } from 'react'
 const User=()=>{
-    //  map --> array of values
-    var myarray = [1,2,3,4,5]
-    var multiplay = myarray.map(function(e){
-        return e*5
-    });
-    console.log(multiplay)
-
-    //  filter --> filter the even numbers , array of values
-    var evennumber = myarray.filter(function(e){
-        return e%2==0
-    })
-    console.log(evennumber)
-
-    //  reducer  -- single value as output
-    var sum = myarray.reduce(function(e,f){
-        return e+f
-    })
-    console.log(sum)
-    
+    const [users,setusers]= useState([]);
     const getUsers =async()=>{
         console.log("print it works")
         await axios.get('http://localhost:4000/v1/users')
         .then((response)=>{
             console.log(response.data)
+            setusers(response.data)
         })
     }
     return(
     <div className="userTable">
+        <table className="table table-bordered">
+            <thead>
+                <tr>
+                    <th>S.NO</th>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>College</th>
+                    <th>Year</th>
+                    <th>age</th>
+                    <th>batch</th>
+                    <th>email</th>
+                </tr>
+            </thead>
+            <tbody>
+                {users.map((users,index)=>{
+                    console.log(users)
+                    return( 
+                    <tr>
+                        <td>{index+1}</td>
+                        <td>{users.name}</td>
+                        <td>{users.address}</td>
+                        <td>{users.college}</td>
+                        <td>{users.year}</td>
+                        <td>{users.age}</td>
+                        <td>{users.batch}</td>
+                        <td>{users.email}</td>
+                    </tr>)
+                })}
+               
+            </tbody>
+
+        </table>
+
         <button onClick={()=>getUsers()}>get Users</button>
     </div>)
 }
