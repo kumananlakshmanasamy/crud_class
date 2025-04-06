@@ -1,16 +1,26 @@
 import axios from 'axios'
 import './user.css'
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
+import { Link } from 'react-router-dom'
 const User=()=>{
     const [users,setusers]= useState([]);
-    const getUsers =async()=>{
-        console.log("print it works")
-        await axios.get('http://localhost:4000/v1/users')
-        .then((response)=>{
-            console.log(response.data)
-            setusers(response.data)
-        })
-    }
+    // const getUsers =async()=>{
+    //     await axios.get('http://localhost:4000/v1/users')
+    //     .then((response)=>{
+    //         console.log(response.data)
+    //         setusers(response.data)
+    //     })
+    // }
+    useEffect(()=>{
+        const getUsers =async()=>{
+            await axios.get('http://localhost:4000/v1/users')
+            .then((response)=>{
+                console.log(response.data)
+                setusers(response.data)
+            })
+        }
+        getUsers()
+    },[])
     return(
     <div className="userTable">
         <table className="table table-bordered">
@@ -39,14 +49,16 @@ const User=()=>{
                         <td>{users.age}</td>
                         <td>{users.batch}</td>
                         <td>{users.email}</td>
+                        <button type='button' className='btn btn-danger'>Delete</button>
+                        <Link to = {`/update/`+users._id} type='button'  className='btn btn-primary'>
+                         update
+                        </Link>
                     </tr>)
                 })}
                
             </tbody>
 
         </table>
-
-        <button onClick={()=>getUsers()}>get Users</button>
     </div>)
 }
 export default User

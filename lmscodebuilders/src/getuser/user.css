@@ -4,6 +4,7 @@
     background-color: gainsboro;
     padding: 20px;
     border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .userTable table{
     width: 100%;
@@ -11,10 +12,22 @@
 .userTable table thead th{
     background-color: darkgray;
     color: whitesmoke;
+    border: 1px solid white ;
 }
 
 .userTable table tbody td{
-    padding: 20px;
+    padding: 10px;
     text-align: center;
+    background-color: gainsboro;
     vertical-align: middle;
+    border: 1px solid white ;
+    
+}
+.btn{
+    margin: 10px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    border: none;
+    padding: 10px;
 }
