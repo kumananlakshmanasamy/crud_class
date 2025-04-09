@@ -20,7 +20,6 @@ const User=()=>{
         const getUsers =async()=>{
             await axios.get('http://localhost:4000/v1/users')
             .then((response)=>{
-                console.log(response.data)
                 setusers(response.data)
             })
         }

@@ -21,7 +21,6 @@ const UpdateUser=()=>{
         console.log(user)
         axios.put(`http://localhost:4000/v1/update/user/${id}`,user)
         .then((response)=>{
-            console.log(response.data)
             toast.success(response.data.message,{position:'top-right'})
             navigate("/")
         })

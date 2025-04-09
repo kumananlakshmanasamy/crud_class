@@ -18,12 +18,9 @@ const AddUsers=()=>{
     const [user,setuser] =useState(users)
     const submitForm = async(e)=>{
         e.preventDefault()
-        console.log(user)
         axios.post(`http://localhost:4000/v1/user`,user)
         .then((response)=>{
-            console.log(response.data)
             toast.success("success",{position:'top-right'})
-            // toast.success(response.data.message,{position:'top-right'})
             navigate("/")
         })
         .catch((error)=>{
