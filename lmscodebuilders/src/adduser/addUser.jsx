@@ -1,10 +1,10 @@
 import { useState } from 'react'
-import './updateUsers.css'
+import './addUsers.css'
 import axios from 'axios'
 import { useNavigate, useParams } from 'react-router-dom'
 import toast from 'react-hot-toast'
-const UpdateUser=()=>{
-    const {id} = useParams();
+const AddUsers=()=>{
+
     const navigate = useNavigate()
     const users ={
         name:'',
@@ -19,10 +19,11 @@ const UpdateUser=()=>{
     const submitForm = async(e)=>{
         e.preventDefault()
         console.log(user)
-        axios.put(`http://localhost:4000/v1/update/user/${id}`,user)
+        axios.post(`http://localhost:4000/v1/user`,user)
         .then((response)=>{
             console.log(response.data)
-            toast.success(response.data.message,{position:'top-right'})
+            toast.success("success",{position:'top-right'})
+            // toast.success(response.data.message,{position:'top-right'})
             navigate("/")
         })
         .catch((error)=>{
@@ -38,7 +39,7 @@ const UpdateUser=()=>{
 
 return(
     <div className="addUser">
-        <h3>UPDATE USERS</h3>
+        <h3>Add USERS</h3>
         <form className='adduserforms'  onSubmit={submitForm}>
         <div className='inputgroup'>
             <label htmlFor="name">Name</label>
@@ -73,4 +74,4 @@ return(
     </div>
 )
 }
-export default UpdateUser
+export default AddUsers
