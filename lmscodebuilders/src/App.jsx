@@ -6,6 +6,7 @@ import { RouterProvider,createBrowserRouter } from 'react-router-dom'
 import User from './getuser/getUser'
 import UpdateUser from './updateuser/updateUser'
 import AddUsers from './adduser/addUser';
+import ValidateCard from './CardValidation/CardValidation';
 function App() {
   const route =createBrowserRouter([
     {
@@ -19,6 +20,9 @@ function App() {
     {
       path:"/add",
       element:<AddUsers/>
+    },{
+      path :"/validate",
+      element:<ValidateCard/>
     }
   ])
   return (
