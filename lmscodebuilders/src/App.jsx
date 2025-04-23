@@ -10,7 +10,11 @@ import AddUsers from './adduser/addUser';
 import ValidateCard from './CardValidation/CardValidation';
 import RegisterScreen from './Auth/Register';
 import LoginScreen from './Auth/Login';
+import { useAuth } from './Auth/authprovider';
 function App() {
+  const {user,token} = useAuth();
+  console.log("user",user);
+  console.log("token",token);
   const route =createBrowserRouter([
     {
       path:"/",
