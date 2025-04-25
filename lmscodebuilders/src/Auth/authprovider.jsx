@@ -1,7 +1,10 @@
 import { useContext,createContext,useState } from "react"
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
+    const navigate = useNavigate();
     const [token,settoken] = useState(localStorage.getItem("token") || null);
     const [user,setuser] = useState(null);
     const loginAction = async(data) => { 
@@ -11,7 +14,7 @@ const AuthProvider = ({ children }) => {
                 settoken(response.data.token);
                 setuser(response.data.name);
                 localStorage.setItem("token",response.data.token);
-        
+                navigate("/users");
             }
         } catch (error) {
             console.log("error",error);
@@ -21,15 +24,20 @@ const AuthProvider = ({ children }) => {
         try {
             const response = await axios.post("http://localhost:4000/v1/createAccount",data);
             if (response.status === 200) {
-                console.log("response",response.data.token);
+                settoken(response.data.token);
+                setuser(response.data.name);
+                localStorage.setItem("token",response.data.token);
+                navigate("/users");
             }
-            console.log("response",response.data);
         } catch (error) {
             console.log("error",error);
         }
     }
     const logoutAction = async(data) => { 
-        console.log("login action",data);
+        settoken(null);
+        setuser(null);
+        localStorage.removeItem("token");
+        navigate("/");
     }
 
     return <AuthContext.Provider value={{loginAction,logoutAction,CreateAccountAction,token,user}}>{children}</AuthContext.Provider>

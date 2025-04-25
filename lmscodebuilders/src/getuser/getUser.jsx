@@ -3,10 +3,15 @@ import './user.css'
 import { useState,useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import toast from 'react-hot-toast'
-
+import { useAuth } from '../Auth/authprovider'
 const User=()=>{
     const [users,setusers]= useState([]);
-    
+    const {logoutAction ,user} = useAuth();
+    const handleLogout = () => {
+        logoutAction(); 
+        toast.success("Logout successfully",{position:'top-right'})
+    }
+
     const deleteitem =async(id)=>{
         await axios.delete(`http://localhost:4000/v1/delete/user/${id}`)
         .then((response)=>{
@@ -27,6 +32,8 @@ const User=()=>{
     },[])
     return(
     <div className="userTable">
+        <p className="text-3xl font-semibold text-blue-800 text-left mb-3">welcome {user}</p>
+        <button type='button' onClick={()=>handleLogout()} className='btn btn-danger'>LOGOUT</button>
         <table className="table table-bordered">
             <thead>
                 <tr>
