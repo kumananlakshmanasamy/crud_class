@@ -1,0 +1,63 @@
+1. virutal dom works in reactJS
+    1. virtual dom is an in-memory representation of the actual dom.
+    2. state changes occur in react component updates first in virual dom.
+    3. it checks the differnce between virutal dom and real dom.
+    4. react only applies the differences in real dom (optimised update)
+
+2. what is react vs angular vs vue
+   1. react is not a full fedged framework --> library
+   2. virtual dom and realdom..
+   3. single way binding / one way binding
+   4. component
+   5. no inbuild data managing library ( context api / redux)
+    
+    1. angular full fledged framework --> MVC
+    2.  two way data binding
+    
+    1. component
+    2. it have inbuild state management solutions
+
+3. React Hooks
+    use state
+    use effect
+    usecontext
+    usememo
+    useref
+    usecallback
+
+4. how to manage state in react js app...
+
+local state -- one file -- usestate
+global state --- global file -- redux ,mobx, context api
+
+5. context API :
+    ex: authenticaton..
+    provider
+    theme set up: light , darktheme
+
+6. what is controlled and uncontrolled components:
+ controlled: inputs ---> react state manage
+ uncontroled :  dom values refere changes
+
+7. how to optimie the performance in React:
+    1. code-splittting -- react.lazy, suspense
+    2. memorization -- react memo react callback
+    3. avoid re-render -- using keys
+    4. lazy loading -- only when rendered
+
+8. what is props dirilling. a->b->c --> statemanagement libraries
+
+9 HOC?? -> higher order components
+  buttton --> <Button..>
+  <CutomButton clour an.. long short Press>
+
+  "take a componnet and return a new comonent, for reusing component logic"
+
+10 fragments in react js:
+    adding upon multiple elements without creating a node
+
+
+    tree like code: <div><p><span></span></p></div>
+
+    return(<div><p><span></span></p></div>)
+     return(<><div><p><span></span></p></div> <div><p><span></span></p></div></>)

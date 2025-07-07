@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState ,useRef , useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "./authprovider";
 const LoginScreen = () => {
@@ -6,7 +6,14 @@ const LoginScreen = () => {
     const [email,setemail] = useState("");
     const [password,setpassword] = useState("");
     const {loginAction} = useAuth();
+    // const inputref = useRef(null);
 
+    // const handlechange = () => {
+    //     inputref.current.value= "Code Builder ";  
+    // }
+    // useEffect(() => {
+    //     inputref.current.focus();
+    // },[])
     const onSubmitHandler = (e) => {
         e.preventDefault();
         const data = {email,password}
@@ -15,10 +22,23 @@ const LoginScreen = () => {
     
   return (
     <div className="flex flex-col items-center justify-center min-h-screen px-6 sm:px-0 bg-gradient-to-br from-blue-200 to purple-400">
+                    {/* <input 
+                        ref={inputref}  
+                        // className="outline-none"
+                        onChange={(e)=>setpassword(e.target.value)} 
+                        value={password} 
+                        placeholder="sample" 
+                        required
+                        type="text"
+                    />
+                    <button onClick={handlechange}>change text</button> */}
+
         <div className="bg-slate-900 p-10 rounded-lg shadow-lg w-full sm:w-96 text-indigo-300 text-sm">
             <h2 className="text-3xl font-semibold text-white text-left mb-3">Sign Up</h2>
             <p className="text-left text-sm mb-6">Login to your Account</p>
+
             <form onSubmit={onSubmitHandler}>
+
                 <div className="mb-4 flex items-center gap-3 w-full px-3 py-2.5 rounded-full bg-[#333A5c]">
                   <input 
                         className="outline-none"

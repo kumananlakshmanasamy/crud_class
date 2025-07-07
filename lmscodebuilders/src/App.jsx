@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useLayoutEffect, useState } from 'react'
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.css';
 import {Route,Routes } from 'react-router-dom' 
@@ -46,6 +46,36 @@ function App() {
   //     element:<ValidateCard/>
   //   }
   // ])
+
+  // usestate
+  // useEffect
+  // useContext
+  // useRef --> 
+  // 1. mutable state(changes) store
+  // 2. state changes render
+  // 3. access DOM elements
+  // 4. access previous state , current state
+  // useLayoutEffect
+  // same like useeffect but it runs before the DOM is painted 
+  // layout changes
+  // does not flicker
+  // uses in animations , scrolling
+
+  // useLayoutEffect(()=>{
+
+  //   const handleResize = () => {
+  //     const width = window.innerWidth;
+  //     const height = window.innerHeight;
+  //     console.log("width",width);
+  //     console.log("height",height);
+  //   }
+
+  // window.addEventListener('resize',handleResize);
+  // return () => {
+  //   window.removeEventListener('resize',handleResize);
+  // }
+  // },[])
+
   return (
       <Routes>
         <Route path="/" element={<Home />} />
